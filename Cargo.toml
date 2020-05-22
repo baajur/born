@@ -14,6 +14,9 @@ exclude = [
     "*.md",
     ".ignore",
     "tests/",
+    ".cargo_vcs_info.json",
+    ".gitignore",
+    ".travis.yml",
 ]
 
 [dev-dependencies]
