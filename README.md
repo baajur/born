@@ -236,15 +236,15 @@ $git clone git@github.com:steadylearner/born.git && cargo test pass
 1. `$cargo test pass` to run passing tests.
 2. `$cargo test fail` to run failing tests. You need to install [trybuild] first.
 
-If you want to see how macros from this package expand, use `$cargo test macros`. You need to install [rustfmt](https://github.com/rust-lang/rustfmt) and [cargo-expand](https://github.com/dtolnay/cargo-expand) to use it.
+If you want to see how the macros from this package expand, use `$cargo test macros`. You need to install [rustfmt](https://github.com/rust-lang/rustfmt) and [cargo-expand](https://github.com/dtolnay/cargo-expand) to use it before.
 
 ```console
 $rustup component add rustfmt && cargo install cargo-expand
 ```
 
-[macrotest] is based on [trybuild].
+[macrotest] is based on [trybuild]. They are not that compatible to test with a single command and take long time.
 
-They are not that compatible to test with a single command. It makes the test to redownload the dependendencies and recompile everytime. For that reason, there are commands to test them separately.
+They make cargo to redownload the dependendencies and recompile everytime. For that reason, there are commands to test them separately.
 
 #### License
 
