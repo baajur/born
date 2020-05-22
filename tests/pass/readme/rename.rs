@@ -13,13 +13,13 @@ public_struct!(
 );
 
 UserBase!(
+    #[derive(Debug)]
     pub struct User {
         pub id: i64,
     }
 );
 
 UserBase!(
-    #[derive(Debug)]
     pub struct NewUser
 );
 
@@ -41,5 +41,5 @@ fn pass_readme_rename() {
         password: new_user.password,
     };
 
-    println!("{}", user.email);
+    println!("{:#?}", user);
 }
