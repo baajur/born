@@ -14,7 +14,8 @@ exclude = [
     ".ignore",
     ".gitignore",
     "tests/",
-    "*.json",
+    "*.json", # Cannot exclude .cargo_vcs_info.json
+    ".cargo_vcs_info.json", # Cannot exclude .cargo_vcs_info.json
     ".travis.yml",
     "CHANGELOG.md",
 ]
