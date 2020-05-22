@@ -16,6 +16,7 @@ exclude = [
     "tests/",
     "*.json",
     ".travis.yml",
+    "CHANGELOG.md",
 ]
 
 [dev-dependencies]
