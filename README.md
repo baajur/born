@@ -2,14 +2,14 @@
 [macrotest]: https://github.com/eupn/macrotest
 
 [img_doc]: https://img.shields.io/badge/rust-documentation-blue.svg
-[doc]: https://docs.rs/doc-comment/
+[doc]: https://docs.rs/born/
 
 Publish(Struct, Enum)
 =============
 
 [![Build Status](https://travis-ci.org/steadylearner/born.svg?branch=master)](https://travis-ci.org/steadylearner/born)
-[![Image Crate](https://img.shields.io/crates/v/doc-comment.svg)](https://crates.io/crates/doc-comment)
-[![Image Doc](https://img.shields.io/badge/rust-documentation-blue.svg)](https://docs.rs/doc-comment/
+[![Image Crate](https://img.shields.io/crates/v/born.svg)](https://crates.io/crates/born)
+[![Image Doc](https://img.shields.io/badge/rust-documentation-blue.svg)](https://docs.rs/born/
 )
 [![Dependency Status](https://david-dm.org/dwyl/esta.svg)](https://david-dm.org/dwyl/esta)
 
