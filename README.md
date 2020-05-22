@@ -7,11 +7,12 @@
 Reuse(Struct, Enum)
 =============
 
+<!-- Include donate button if people find it useful later. -->
+
 [![Build Status](https://travis-ci.org/steadylearner/born.svg?branch=master)](https://travis-ci.org/steadylearner/born)
 [![Image Crate](https://img.shields.io/crates/v/born.svg)](https://crates.io/crates/born)
 [![Image Doc](https://img.shields.io/badge/rust-documentation-blue.svg)](https://docs.rs/born/
 )
-[![Dependency Status](https://david-dm.org/dwyl/esta.svg)](https://david-dm.org/dwyl/esta)
 
 It provides functional macros to reuse fields from [Struct](https://doc.rust-lang.org/std/keyword.struct.html) and [Enum](https://doc.rust-lang.org/std/keyword.enum.html) definition.
 

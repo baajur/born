@@ -1,7 +1,8 @@
 [package]
 name = "born"
 version = "0.0.0"
-authors = ["Steadylearner(www.steadylearner.com) thisisemailforworkandvolunteer@gmail.com"]
+# It have to be short.
+authors = ["Steadylearner"]
 edition = "2018"
 license = "MIT OR Apache-2.0"
 description = "Reuse fields from Struct and Enum definition with functional macros."
@@ -10,7 +11,7 @@ documentation = "https://docs.rs/born"
 # error: api errors (status 200 OK): invalid upload request: invalid length 6, expected at most 5 categories per crate at line 1 column 7931
 # https://crates.io/category_slugs, Should have used only what are inside the list.
 categories = ["no-std", "rust-patterns"]
-readme = "README.md"
+readme = "README.md" # It is used at https://crates.io/crates/born
 exclude = [
     "*.py",
     ".ignore",
