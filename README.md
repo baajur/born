@@ -4,7 +4,7 @@
 [img_doc]: https://img.shields.io/badge/rust-documentation-blue.svg
 [doc]: https://docs.rs/born/
 
-Publish(Struct, Enum)
+Reuse(Struct, Enum)
 =============
 
 [![Build Status](https://travis-ci.org/steadylearner/born.svg?branch=master)](https://travis-ci.org/steadylearner/born)
@@ -242,9 +242,9 @@ If you want to see how macros from this package expand, use `$cargo test macros`
 $rustup component add rustfmt && cargo install cargo-expand
 ```
 
-[macrotest] is based on [trybuild]. They are not that compatible to test with a single command.
+[macrotest] is based on [trybuild].
 
-It makes the test to redownload the dependendencies and recompile everytime. For that reason, there are commands to test them separately.
+They are not that compatible to test with a single command. It makes the test to redownload the dependendencies and recompile everytime. For that reason, there are commands to test them separately.
 
 #### License
 
