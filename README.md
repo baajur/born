@@ -202,7 +202,7 @@ UserBase!(
 
 ## Details
 
-- Each struct and enum created from the macros are completely unrelevant except they have the same fields you define.
+- Each struct and enum created from the macros are completely unrelevant to each other except they have the same fields you define.
 
 - When you use `private_struct!` and `private_enum!`, you can't use pub keyword in it and others use them. [It wouldn't be logical if a private struct or private enum can have public fields.](https://doc.rust-lang.org/book/ch07-03-paths-for-referring-to-an-item-in-the-module-tree.html#making-structs-and-enums-public)
 
