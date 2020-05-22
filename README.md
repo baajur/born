@@ -242,9 +242,9 @@ If you want to see how macros from this package expand, use `$cargo test macros`
 $rustup component add rustfmt && cargo install cargo-expand
 ```
 
-[macrotest] is based on [trybuild]. They are not that compatible to test with a single command. It make the test to redownload the dependendencies and recompile everytime.
+[macrotest] is based on [trybuild]. They are not that compatible to test with a single command.
 
-For that reason, there are commands to test them separately.
+It makes the test to redownload the dependendencies and recompile everytime. For that reason, there are commands to test them separately.
 
 #### License
 
