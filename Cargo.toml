@@ -1,0 +1,23 @@
+[package]
+name = "born"
+version = "0.0.0"
+authors = ["Steadylearner(www.steadylearner.com) thisisemailforworkandvolunteer@gmail.com"]
+edition = "2018"
+license = "MIT OR Apache-2.0"
+description = "Reuse fields from Struct and Enum definition with functional macros."
+repository = "https://github.com/steadylearner/born"
+documentation = "https://docs.rs/born"
+categories = ["rust-macros", "rust-patterns", "struct", "enum", "code-reuse", "steadylearner"]
+readme = "README.md"
+exclude = [
+    "*.py",
+    "*.md",
+    ".ignore",
+    "tests/",
+]
+
+[dev-dependencies]
+macrotest = "1.0.2"
+trybuild = "1.0.27"
+doc-comment = "0.3.3"
+
