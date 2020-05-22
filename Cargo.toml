@@ -11,11 +11,10 @@ categories = ["rust-macros", "rust-patterns", "struct", "enum", "code-reuse", "s
 readme = "README.md"
 exclude = [
     "*.py",
-    "*.md",
     ".ignore",
-    "tests/",
-    ".cargo_vcs_info.json",
     ".gitignore",
+    "tests/",
+    "*.json",
     ".travis.yml",
 ]
 
