@@ -83,9 +83,11 @@ UserBase!(
 );
 ```
 
-The differences are it is done with macros and you have to care for visibilty(public or private) in Rust. No real inherit of fields happen here. It is built(born) by your first definition and each struct and enum are completely irrevant to each other.
+The differences are it is done with macros and you have to care for visibilty(public or private) in Rust. No real inherit of fields happen here. It is built(born) by your first definition and each struct and enum are completely irrelevant to each other.
 
 Nothing is built or done before you call them after the first definition. It is possible with the power of the Rust macro.
+
+You can think the macros from this library "lazy struct and enum builder".
 
 ## Examples
 
