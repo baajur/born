@@ -23,7 +23,73 @@ born = "0.0.0"
 
 <br>
 
+## The reason to use this library
+
+[You can read Python FAST API documentation that inspired this library.](https://fastapi.tiangolo.com/tutorial/extra-models/#reduce-duplication)
+
+In Python, you can remove duplicate fields by inheriting fields from another class.
+
+```py
+from pydantic import BaseModel, EmailStr
+
+class UserBase(BaseModel):
+    username: str
+    email: EmailStr
+    full_name: str = None
+
+
+class UserIn(UserBase):
+    password: str
+
+
+class UserOut(UserBase):
+    pass
+
+
+class UserInDB(UserBase):
+    hashed_password: str
+```
+
+With this library, you can do the exact same thing for struct and enum.
+
+```rust
+use born::{
+    nested_macro,
+    public_struct,
+};
+
+public_struct!(
+    pub struct UserBase {
+        username: String,
+        email: String,
+        full_name: Option<String>,
+    }
+);
+
+UserBase!(
+    pub struct UserIn {
+        pub password: String,
+    }
+);
+
+UserBase!(
+    pub struct UserOut
+);
+
+UserBase!(
+    pub struct UserInDB {
+        pub hashed_password: String,
+    }
+);
+```
+
+The differences are it is done with macros and you have to care for visibilty(public or private) in Rust. No real inherit of fields happen here. It is built(born) by your first definition and each struct and enum are completely irrevant to each other.
+
+Nothing is built or done before you call them after the first definition. It is possible with the power of the Rust macro.
+
 ## Examples
+
+If you want to build private struct and enum, just use macros that start with private and remove pub in each example. 
 
 ### Struct
 
@@ -203,7 +269,7 @@ UserBase!(
 
 ## Details
 
-- Each struct and enum created from the macros are completely unrelevant to each other except they have the same fields you define.
+- Each struct and enum created from the macros are completely unrelevant to each other except they are built(born) from the same fields you define.
 
 - When you use `private_struct!` and `private_enum!`, you can't use pub keyword in it and others use them. [It wouldn't be logical if a private struct or private enum can have public fields.](https://doc.rust-lang.org/book/ch07-03-paths-for-referring-to-an-item-in-the-module-tree.html#making-structs-and-enums-public)
 
