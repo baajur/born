@@ -223,7 +223,8 @@
 //!
 //! ## Comparison with attribute macros
 //!
-//! - [You can reuse the fields with attribute macros also.](https://github.com/steadylearner/Rust-Full-Stack/tree/master/macro/attribute) But, you need some dependencies.
+//! - [You can reuse the fields with attribute macros also.](https://github.com/steadylearner/born-attribute) But, you need some dependencies.
+ But, you need some dependencies.
 //!
 //! - [If you want more, please read the official documenation about procedural macros.](https://doc.rust-lang.org/reference/procedural-macros.html#attribute-macros)
 

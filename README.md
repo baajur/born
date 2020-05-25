@@ -50,7 +50,7 @@ class UserInDB(UserBase):
     hashed_password: str
 ```
 
-With this library, you can do the exact same thing for struct and enum.
+With this library, you can do the exact same thing for struct and enum. You can see you don't need the typing library like `pydantic` in Rust. It has built in strong type system.
 
 ```rust
 use born::{
@@ -83,7 +83,7 @@ UserBase!(
 );
 ```
 
-The differences are it is done with macros and you have to care for visibilty(public or private) in Rust. No real inherit of fields happen here. It is built(born) by your first definition and each struct and enum are completely irrelevant to each other.
+The differences from the Python example are the code reusage is done with a macro and you have to care for visibilty(public or private) in Rust. No real inherit of fields happen here. It is built(born) by your first definition and each struct and enum are completely irrelevant to each other.
 
 Nothing is built or done before you call them after the first definition. It is possible with the power of the Rust macro.
 
@@ -290,7 +290,7 @@ macro_rules! nested_macro {
 
 ## Comparison with attribute macro
 
-- [You can reuse the fields with attribute macros also.](https://github.com/steadylearner/Rust-Full-Stack/tree/master/macro/attribute) But, you need some dependencies.
+- [You can reuse the fields with attribute macros also.](https://github.com/steadylearner/born-attribute) But, you need some dependencies.
 
 - [If you want more, please read the official documenation about procedural macros.](https://doc.rust-lang.org/reference/procedural-macros.html#attribute-macros)
 
