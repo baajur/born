@@ -1,6 +1,6 @@
 [package]
 name = "born"
-version = "0.0.0"
+version = "0.0.1"
 # It have to be short.
 authors = ["Steadylearner"]
 edition = "2018"

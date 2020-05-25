@@ -25,7 +25,7 @@ UserBase!(
 
 // $cargo test -- --nocapture
 #[test]
-fn pass_readme_rename() {
+fn pass_rename() {
     let new_user = NewUser {
         first_name: "steady".into(),
         last_name: "learner".into(),

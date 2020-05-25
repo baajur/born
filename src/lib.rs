@@ -17,12 +17,16 @@
 //!
 //! ```toml
 //! [dependencies]
-//! born = "0.0.0"
+//! born = "0.0.1"
 //! ```
 //!
 //! <br>
 //!
 //! ## Examples
+//!
+//! Here, macros to build public struct and enum are used.
+//!
+//! If you want to build private struct and enum, just use macros that start with private and shouldn't use `pub` inside.
 //!
 //! ### Struct
 //!
@@ -35,7 +39,6 @@
 //!    public_struct,
 //! };
 //!
-//! // Define your base public struct here.
 //! public_struct!(
 //!     // pub is required here before struct
 //!     pub struct MessageBase {
@@ -100,7 +103,7 @@
 //!
 //! ### Enum
 //!
-//! [Compare it with the code example from the Rust documenation for Enum.](https://doc.rust-lang.org/stable/rust-by-example/custom_types/enum.html)
+//! [Compare it with the code example from the Rust documenation.](https://doc.rust-lang.org/stable/rust-by-example/custom_types/enum.html)
 //!
 //! ```
 //! # #[macro_use] extern crate born;
@@ -109,7 +112,6 @@
 //!     private_enum,
 //! };
 //!
-//! // Define your base private enum here.
 //! private_enum!(
 //!     enum WebEventBase {
 //!         PageLoad,
@@ -183,7 +185,7 @@
 //!     pub struct NewUser
 //! );
 //!
-//! // It is equal to code it manually.
+//! // It is equal to write these manually.
 //!
 //! // pub struct User {
 //! //     pub id: i64,
@@ -205,7 +207,7 @@
 //!
 //! ## Details
 //!
-//! - Each struct and enum created from the macros are completely unrelevant to each other except they have the same fields you define.
+//! - Each struct and enum created from the macros are completely unrelevant to each other except they are built(born) from the same definition
 //!
 //! - When you use `private_struct!` and `private_enum!`, you can't use pub keyword in it and others use them. [It wouldn't be logical if a private struct or private enum can have public fields.](https://doc.rust-lang.org/book/ch07-03-paths-for-referring-to-an-item-in-the-module-tree.html#making-structs-and-enums-public)
 //!
@@ -221,10 +223,9 @@
 //!
 //! <br>
 //!
-//! ## Comparison with attribute macros
+//! ## Why not attribute macro?
 //!
-//! - [You can reuse the fields with attribute macros also.](https://github.com/steadylearner/born-attribute) But, you need some dependencies.
- But, you need some dependencies.
+//! - [You can reuse the fields with attribute macro also.](https://github.com/steadylearner/born-attribute) But, you need some dependencies.
 //!
 //! - [If you want more, please read the official documenation about procedural macros.](https://doc.rust-lang.org/reference/procedural-macros.html#attribute-macros)
 

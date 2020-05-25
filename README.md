@@ -1,9 +1,6 @@
 [trybuild]: https://github.com/dtolnay/trybuild
 [macrotest]: https://github.com/eupn/macrotest
 
-[img_doc]: https://img.shields.io/badge/rust-documentation-blue.svg
-[doc]: https://docs.rs/born/
-
 Reuse(Struct, Enum)
 =============
 
@@ -18,39 +15,14 @@ It provides functional macros to reuse fields from [Struct](https://doc.rust-lan
 
 ```toml
 [dependencies]
-born = "0.0.0"
+born = "0.0.1"
 ```
 
 <br>
 
-## The reason to use this library
+## Why this library?
 
-[You can read Python FAST API documentation that inspired this library.](https://fastapi.tiangolo.com/tutorial/extra-models/#reduce-duplication)
-
-In Python, you can remove duplicate fields by inheriting fields from another class.
-
-```py
-from pydantic import BaseModel, EmailStr
-
-class UserBase(BaseModel):
-    username: str
-    email: EmailStr
-    full_name: str = None
-
-
-class UserIn(UserBase):
-    password: str
-
-
-class UserOut(UserBase):
-    pass
-
-
-class UserInDB(UserBase):
-    hashed_password: str
-```
-
-With this library, you can do the exact same thing for struct and enum. You can see you don't need the typing library like `pydantic` in Rust. It has built in strong type system.
+You can define common fields in Rust struct and enum once and reuse them to remove code duplication. It will be useful when you want to make many structs with mostly common fields like the example below.
 
 ```rust
 use born::{
@@ -72,6 +44,7 @@ UserBase!(
     }
 );
 
+// Reuse with the same fields.
 UserBase!(
     pub struct UserOut
 );
@@ -83,19 +56,46 @@ UserBase!(
 );
 ```
 
-The differences from the Python example are the code reusage is done with a macro and you have to care for visibilty(public or private) in Rust. No real inherit of fields happen here. It is built(born) by your first definition and each struct and enum are completely irrelevant to each other.
+Compare it with Python code below from [FAST API](https://fastapi.tiangolo.com/tutorial/extra-models/#reduce-duplication) that inspired this library.
 
-Nothing is built or done before you call them after the first definition. It is possible with the power of the Rust macro.
+```py
+from pydantic import BaseModel, EmailStr
 
-You can think the macros from this library "lazy struct and enum builder".
+class UserBase(BaseModel):
+    username: str
+    email: EmailStr
+    full_name: str = None
+
+
+class UserIn(UserBase):
+    password: str
+
+# Reuse with the same fields.
+class UserOut(UserBase):
+    pass
+
+
+class UserInDB(UserBase):
+    hashed_password: str
+```
+
+You can see almost same thing is done here to remove code duplication in both parts.
+
+But, different from Python, there is no inheritance of fields with macros from **born**. It is lazily built(born) by your first struct or enum definition.
+
+Everything made from them are completely irrelevant to each other execpt they share the same definition. There is no memory share or something like that.
+
+The macros from this library are **lazy struct and enum builders** to remove code duplication. It is possible with the power of the Rust macro.
 
 ## Examples
 
-If you want to build private struct and enum, just use macros that start with private and remove pub in each example. 
+Here, macros to build public struct and enum are used.
+
+If you want to build private struct and enum, just use macros that start with private and shouldn't use `pub` inside.
 
 ### Struct
 
-Say you build a demo web server to send private messages.
+Say you build a simple demo web server to send private messages.
 
 ```rust
 use born::{
@@ -103,7 +103,6 @@ use born::{
     public_struct,
 };
 
-// Define your base public struct here.
 public_struct!(
     // pub is required here before struct
     pub struct MessageBase {
@@ -168,7 +167,7 @@ fn main() {
 
 ### Enum
 
-[Compare it with the code example from the Rust documenation for Enum.](https://doc.rust-lang.org/stable/rust-by-example/custom_types/enum.html)
+[Compare it with the code example from the Rust documenation.](https://doc.rust-lang.org/stable/rust-by-example/custom_types/enum.html)
 
 ```rust
 use born::{
@@ -176,7 +175,6 @@ use born::{
     private_enum,
 };
 
-// Define your base private enum here.
 private_enum!(
     enum WebEventBase {
         PageLoad,
@@ -220,58 +218,11 @@ fn main() {
 }
 ```
 
-### Rename
-
-You can rename the struct and reuse the same fields. You can do the same with enum.
-
-```rust
-use born::{
-    nested_macro,
-    public_struct,
-};
-
-public_struct!(
-    pub struct UserBase {
-        pub first_name: String,
-        pub last_name: String,
-        pub email: String,
-        pub password: String,
-    }
-);
-
-UserBase!(
-    pub struct User {
-        pub id: i64,
-    }
-);
-
-UserBase!(
-    pub struct NewUser
-);
-
-// It is equal to code it manually.
-
-// pub struct User {
-//     pub id: i64,
-//     pub first_name: String,
-//     pub last_name: String,
-//     pub email: String,
-//     pub password: String,
-// }
-
-// pub struct NewUser {
-//     pub first_name: String,
-//     pub last_name: String,
-//     pub email: String,
-//     pub password: String,
-// }
-```
-
 <br>
 
 ## Details
 
-- Each struct and enum created from the macros are completely unrelevant to each other except they are built(born) from the same fields you define.
+- Each struct and enum created from the macros are completely unrelevant to each other except they are built(born) from the same definition.
 
 - When you use `private_struct!` and `private_enum!`, you can't use pub keyword in it and others use them. [It wouldn't be logical if a private struct or private enum can have public fields.](https://doc.rust-lang.org/book/ch07-03-paths-for-referring-to-an-item-in-the-module-tree.html#making-structs-and-enums-public)
 
@@ -288,9 +239,9 @@ macro_rules! nested_macro {
 
 <br>
 
-## Comparison with attribute macro
+## Why not attribute macro?
 
-- [You can reuse the fields with attribute macros also.](https://github.com/steadylearner/born-attribute) But, you need some dependencies.
+- [You can reuse the fields with attribute macro also.](https://github.com/steadylearner/born-attribute) But, you need some dependencies.
 
 - [If you want more, please read the official documenation about procedural macros.](https://doc.rust-lang.org/reference/procedural-macros.html#attribute-macros)
 

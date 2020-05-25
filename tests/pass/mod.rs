@@ -6,3 +6,4 @@ pub mod public_enum;
 pub mod public_struct;
 
 pub mod readme;
+pub mod rename;
