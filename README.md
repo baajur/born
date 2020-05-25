@@ -22,7 +22,7 @@ born = "0.0.1"
 
 ## Why this library?
 
-You can define common fields in Rust struct and enum once and reuse them to remove code duplication. It will be useful when you want to make many structs with mostly common fields like the example below.
+You can define common fields in Rust struct and enum once and reuse them to remove code duplication. Use it when you want to reuse the same fields for the structs like the example below.
 
 ```rust
 use born::{
