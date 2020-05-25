@@ -18,6 +18,8 @@ It provides functional macros to reuse fields from [Struct](https://doc.rust-lan
 born = "0.0.1"
 ```
 
+[![born crate example](https://raw.githubusercontent.com/steadylearner/born/master/unite_rust_and_python_with_born.png)](https://raw.githubusercontent.com/steadylearner/born/master/unite_rust_and_python_with_born.png)
+
 <br>
 
 ## Why this library?
