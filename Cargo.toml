@@ -2,12 +2,13 @@
 name = "born"
 version = "0.0.1"
 # It have to be short.
-authors = ["Steadylearner"]
+authors = ["Steadylearner <thisisemailforworkandvolunteer@gmail.com>"]
 edition = "2018"
 license = "MIT OR Apache-2.0"
 description = "Reuse fields from Struct and Enum definition with functional macros."
 repository = "https://github.com/steadylearner/born"
 documentation = "https://docs.rs/born"
+keywords = ["struct", "enum", "macro", "born", "inherit", "reuse", "duplication", "steadylearner"]
 # error: api errors (status 200 OK): invalid upload request: invalid length 6, expected at most 5 categories per crate at line 1 column 7931
 # https://crates.io/category_slugs, Should have used only what are inside the list.
 categories = ["no-std", "rust-patterns"]
