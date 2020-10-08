@@ -167,6 +167,34 @@ fn main() {
 }
 ```
 
+You can also use the public_struct! and private_struct! with serde derive. For example, you can rename fields to camelCase with `#[serde(rename_all = "camelCase")]` etc.
+
+```rust
+use born::{
+    nested_macro,
+    public_struct,
+};
+
+use serde::{Serialize, Deserialize}; 
+
+pub fn main() {
+    public_struct!(
+        pub struct MessageBase {
+            pub text: String,
+            pub read: bool,
+        }
+    );
+
+    MessageBase!(
+        #[derive(Serialize, Deserialize, Debug)]
+        #[serde(rename_all = "camelCase")] // This file is to test this.
+        pub struct Message {
+            pub id: i8,
+        }
+    );
+}
+```
+
 ### Enum
 
 [Compare it with the code example from the Rust documenation.](https://doc.rust-lang.org/stable/rust-by-example/custom_types/enum.html)
@@ -255,7 +283,7 @@ macro_rules! nested_macro {
 $git clone git@github.com:steadylearner/born.git && cargo test pass
 ```
 
-1. `$cargo test pass` to run passing tests.
+1. `$cargo install cargo-expand` and `$cargo test pass` to run passing tests.
 2. `$cargo test fail` to run failing tests. You need to install [trybuild] first.
 
 If you want to see how the macros from this package expand, use `$cargo test macros`. You need to install [rustfmt](https://github.com/rust-lang/rustfmt) and [cargo-expand](https://github.com/dtolnay/cargo-expand) to use it before.

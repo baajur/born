@@ -29,8 +29,16 @@ macro_rules! private_struct {
                             $( $commonfield: $commonty, )+
                         }
                     };
+
                     (#[derive($s($arg:tt)+)]) => {
                         #[derive($s($arg)+)]
+                        struct $commonstruct {
+                            $( $commonfield: $commonty, )+
+                        }
+                    };
+                    (#[derive($s($arg:tt)+)] #[serde($s($args:tt)+)]) => {
+                        #[derive($s($arg)+)]
+                        #[serde($s($args)+)]
                         struct $commonstruct {
                             $( $commonfield: $commonty, )+
                         }
@@ -42,8 +50,17 @@ macro_rules! private_struct {
                             $s( $field: $ty ),+
                         }
                     };
+
                     (#[derive($s($arg:tt)+)] struct $name:ident { $s( $field:ident: $ty:ty ),+ $s(,)* }) => {
                         #[derive($s($arg)+)]
+                        struct $name {
+                            $( $commonfield: $commonty, )+
+                            $s( $field: $ty ),+
+                        }
+                    };
+                    (#[derive($s($arg:tt)+)] #[serde($s($args:tt)+)] struct $name:ident { $s( $field:ident: $ty:ty ),+ $s(,)* }) => {
+                        #[derive($s($arg)+)]
+                        #[serde($s($args)+)]
                         struct $name {
                             $( $commonfield: $commonty, )+
                             $s( $field: $ty ),+
@@ -55,8 +72,16 @@ macro_rules! private_struct {
                             $( $commonfield: $commonty, )+
                         }
                     };
+
                     (#[derive($s($arg:tt)+)] struct $name:ident) => {
                         #[derive($s($arg)+)]
+                        struct $name {
+                            $( $commonfield: $commonty, )+
+                        }
+                    };
+                    (#[derive($s($arg:tt)+)] #[serde($s($args:tt)+)] struct $name:ident) => {
+                        #[derive($s($arg)+)]
+                        #[serde($s($args)+)]
                         struct $name {
                             $( $commonfield: $commonty, )+
                         }

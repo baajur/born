@@ -1,3 +1,4 @@
+# rustc 1.49.0-nightly
 [package]
 name = "born"
 version = "0.0.1"
@@ -26,7 +27,10 @@ exclude = [
 ]
 
 [dev-dependencies]
-macrotest = "1.0.2"
-trybuild = "1.0.27"
+# Test
+macrotest = "1.0.5"
+trybuild = "1.0.35"
 doc-comment = "0.3.3"
+# New feature to use born with serde derive macro.
+serde = { version = "1.0.116", features = ["derive"] }
 
