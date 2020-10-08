@@ -7,16 +7,17 @@ use serde::{Serialize, Deserialize};
 
 pub fn main() {
     public_struct!(
-        pub struct MessageBase {
-            pub text: String,
-            pub read: bool,
+        pub struct PostBase {
+            pub user_id: i8,
+            pub title: String,
+            pub body: String,
         }
     );
 
-    MessageBase!(
+    PostBase!(
         #[derive(Serialize, Deserialize, Debug)]
-        #[serde(rename_all = "camelCase")] // This file is to test this.
-        pub struct Message {
+        #[serde(rename_all = "camelCase")]
+        pub struct Post {
             pub id: i8,
         }
     );

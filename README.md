@@ -170,6 +170,9 @@ fn main() {
 You can also use the public_struct! and private_struct! with serde derive. For example, you can rename fields to camelCase with `#[serde(rename_all = "camelCase")]` etc.
 
 ```rust
+// Cargo.toml
+// born = { git = "https://github.com/steadylearner/born.git", rev = "f52e2a1" }
+
 use born::{
     nested_macro,
     public_struct,
@@ -177,22 +180,21 @@ use born::{
 
 use serde::{Serialize, Deserialize}; 
 
-pub fn main() {
-    public_struct!(
-        pub struct MessageBase {
-            pub text: String,
-            pub read: bool,
-        }
-    );
+public_struct!(
+    pub struct PostBase {
+        pub user_id: i8,
+        pub title: String,
+        pub body: String,
+    }
+);
 
-    MessageBase!(
-        #[derive(Serialize, Deserialize, Debug)]
-        #[serde(rename_all = "camelCase")] // This file is to test this.
-        pub struct Message {
-            pub id: i8,
-        }
-    );
-}
+PostBase!(
+    #[derive(Serialize, Deserialize, Debug)]
+    #[serde(rename_all = "camelCase")]
+    pub struct Post {
+        pub id: i8,
+    }
+);
 ```
 
 ### Enum
