@@ -85,7 +85,7 @@ You can see almost same thing is done here to remove code duplication in both pa
 
 But, different from Python, there is no inheritance of fields with macros from **born**. It is lazily built(born) by your first struct or enum definition.
 
-Everything made from them are completely irrelevant to each other execpt they share the same definition. There is no memory share or something like that.
+Everything made from them are completely irrelevant to each other except they share the same definition. There is no memory share or something like that.
 
 The macros from this library are **lazy struct and enum builders** to remove code duplication. It is possible with the power of the Rust macro.
 
